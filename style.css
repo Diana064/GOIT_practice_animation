@@ -1,0 +1,75 @@
+­­­*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+body {
+  background-color: aqua;
+}
+.block {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 1120px;
+  margin: 0 auto;
+  background-color: bisque;
+  gap: 32px;
+}
+.item {
+  position: relative;
+  width: 256px;
+  height: 256px;
+  background-color: rgb(110, 110, 245);
+  animation-name: bigger;
+  animation-duration: 2000ms;
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.item::after {
+  content: "";
+  top: 10px;
+  left: 10px;
+  border: 5px dotted rebeccapurple;
+  position: absolute;
+  width: 236px;
+  height: 236px;
+  animation-name: border-style;
+  animation-duration: 300ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes bigger {
+  0% {
+    transform: scale(0.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes border-style {
+  0% {
+    border-style: dotted;
+  }
+  100% {
+    border-style: dashed;
+  }
+}
+.item:hover {
+  transform: skew(-10deg);
+}
+.item p {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  background-color: rgb(206, 36, 36);
+  color: aqua;
+  z-index: 100;
+  transition: color 2000ms linear, opacity 2000ms linear,
+    transform 2000ms linear;
+}
+.item p:hover {
+  color: green;
+  opacity: 0.9;
+  transform: translate(-50%, -50%) rotate(360deg);
+}
